@@ -30,3 +30,7 @@ HELP.md
 mvnw.cmd
 
 mvnw
+
+.idea/
+
+target/classes/

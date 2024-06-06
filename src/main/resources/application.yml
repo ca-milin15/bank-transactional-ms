@@ -1,0 +1,37 @@
+server:
+  port: 8092
+  servlet:
+    context-path: /api/pichincha/bank
+spring:
+  application:
+    name: bank-transacional-ms
+  amqp:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    bank-queue-new-customer: bank.queue.new.customer
+  datasource:
+    url: jdbc:postgresql://localhost:5433/transactional
+    username: root
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+
+system-properties:
+  messages:
+    error:
+      balance-insufficient-code: "ERR001"
+      balance-insufficient-msj: "No tiene saldo suficiente"
+      tx-type-code: "ERR002"
+      tx-type-msj: "El tipo de transacción no es válido"
