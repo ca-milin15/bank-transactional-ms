@@ -10,8 +10,8 @@ import java.util.Arrays;
 @AllArgsConstructor
 public enum TransactionTypeEnum {
 
-    DEBITO("DE", "Débito"),
-    CREDITO("CR", "Crédito");
+    DEBITO("DEB", "Débito"),
+    CREDITO("CRE", "Crédito");
 
     String code;
     String description;

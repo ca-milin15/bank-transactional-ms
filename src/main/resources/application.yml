@@ -35,3 +35,4 @@ system-properties:
       balance-insufficient-msj: "No tiene saldo suficiente"
       tx-type-code: "ERR002"
       tx-type-msj: "El tipo de transacción no es válido"
+      entity-not-found-msj: "El código: %s no existe en el sistema."

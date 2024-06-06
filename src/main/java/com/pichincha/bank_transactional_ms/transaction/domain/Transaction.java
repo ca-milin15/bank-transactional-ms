@@ -46,6 +46,7 @@ public class Transaction {
                 .type(type.getDescription())
                 .balance(balance)
                 .amount(amount)
+                .createdAt(createdAt)
                 .build();
     }
 }

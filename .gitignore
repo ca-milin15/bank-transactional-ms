@@ -34,3 +34,9 @@ mvnw
 .idea/
 
 target/classes/
+
+*.lst
+
+target/maven-archiver/
+
+target/

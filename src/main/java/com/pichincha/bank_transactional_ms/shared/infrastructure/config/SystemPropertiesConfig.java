@@ -32,6 +32,7 @@ public class SystemPropertiesConfig {
             String balanceInsufficientMsj;
             String txTypeCode;
             String txTypeMsj;
+            String entityNotFoundMsj;
         }
     }
 }

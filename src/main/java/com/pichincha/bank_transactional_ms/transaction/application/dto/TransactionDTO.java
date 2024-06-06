@@ -27,13 +27,15 @@ public class TransactionDTO {
     String customerIdentification;
 
     @NotBlank
-    @Pattern(regexp = "^(DE|CR)$")
+    @Pattern(regexp = "^(DEB|CRE)$")
     String type;
 
     @NotNull
     BigDecimal amount;
 
     BigDecimal balance;
+
+    LocalDateTime createdAt;
 
     public Transaction toTransaction(Account account, TransactionTypeEnum type) {
         var balance = calculateBalance(account, type);

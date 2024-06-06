@@ -1,5 +1,6 @@
 package com.pichincha.bank_transactional_ms.shared.infrastructure.config;
 
+import com.pichincha.bank_transactional_ms.shared.application.exceptions.EntityNotFoundRuntimeException;
 import com.pichincha.bank_transactional_ms.shared.infrastructure.listener.dto.ErrorOut;
 import com.pichincha.bank_transactional_ms.transaction.application.exceptions.BusinessRulesRuntimeException;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ public class ControllerAdvice {
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorOut> generalError(RuntimeException ex, WebRequest request){
-        var errorOut = new ErrorOut("GenericError", ex.getMessage());
+        var errorOut = new ErrorOut("UnknownError", ex.getMessage());
         return new ResponseEntity<>(errorOut, HttpStatus.BAD_REQUEST);
     }
 
@@ -33,6 +34,12 @@ public class ControllerAdvice {
         var detailAsString = Arrays.stream(detail).map(String::valueOf).collect(Collectors.joining());
         var errorOut = new ErrorOut(ex.getStatusCode().toString(), detailAsString);
         return new ResponseEntity<>(errorOut, HttpStatus.PRECONDITION_FAILED);
+    }
+
+    @ExceptionHandler(EntityNotFoundRuntimeException.class)
+    public ResponseEntity<ErrorOut> entityNotFoundRuntimeException(EntityNotFoundRuntimeException ex, WebRequest request){
+        var errorOut = new ErrorOut(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+        return new ResponseEntity<>(errorOut, HttpStatus.NOT_FOUND);
     }
 
 
